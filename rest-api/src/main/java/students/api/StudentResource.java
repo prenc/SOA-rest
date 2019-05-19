@@ -35,6 +35,7 @@ public class StudentResource {
 
     @Context
     UriInfo uriInfo;
+
     @Inject
     private KeyGenerator keyGenerator;
 

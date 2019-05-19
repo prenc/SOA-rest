@@ -17,11 +17,13 @@ public class Consumer {
     private static final String URL = "http://localhost:8080/rest-api/school";
     private static String jwtToken;
 
+    private static Student exampleS = new Student("Michal", 177, new ArrayList<>(Arrays.asList(new Subject("PE"),
+            new Subject("trele"))));
+
     public static void main(String[] args) {
         jwtToken = login("xxx", "xxx");
 
-        Student exampleS = new Student("Michal", 177, new ArrayList<>(Arrays.asList(new Subject("PE"),
-                new Subject("trele"))));
+        printAllStudents();
 
         addStudent(exampleS);
 
@@ -74,6 +76,8 @@ public class Consumer {
                 .post(Entity.entity(student, MediaType.APPLICATION_JSON_TYPE));
 
         client.close();
+        System.out.println(student);
+        printHLine("");
     }
 
     private static void deleteStudent(int id) {
