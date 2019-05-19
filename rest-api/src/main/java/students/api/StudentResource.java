@@ -31,9 +31,9 @@ public class StudentResource {
     private HashMap<Integer, Student> school = new HashMap<>();
 
     public StudentResource() {
-        enroll(new Student("jas", 185, new ArrayList<>(Collections.singletonList(new Subject("PE")))));
-        enroll(new Student("malgosia", 166, new ArrayList<>(Collections.singletonList(new Subject("Religion")))));
-        enroll(new Student("jaga", 175, new ArrayList<>(Arrays.asList(new Subject("Math"), new Subject("Religion")))));
+        enroll(new Student("Jasiek", 185, new ArrayList<>(Collections.singletonList(new Subject("PE")))));
+        enroll(new Student("Malgoska", 166, new ArrayList<>(Collections.singletonList(new Subject("Religion")))));
+        enroll(new Student("Baba Jaga", 175, new ArrayList<>(Arrays.asList(new Subject("Math"), new Subject("Religion")))));
     }
 
     @Context

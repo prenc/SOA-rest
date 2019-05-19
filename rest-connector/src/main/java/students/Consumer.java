@@ -19,15 +19,19 @@ public class Consumer {
 
     public static void main(String[] args) {
         jwtToken = login("xxx", "xxx");
-        System.out.println(jwtToken);
 
         Student exampleS = new Student("Michal", 177, new ArrayList<>(Arrays.asList(new Subject("PE"),
                 new Subject("trele"))));
 
-        System.out.println("Add student");
-        Response response = makePost("/", exampleS);
-        System.out.println(response.readEntity(new GenericType<Student>() {
-        }));
+        addStudent(exampleS);
+
+        getStudent(1);
+
+        getStudent(6);
+
+        printAllStudents();
+
+        deleteStudent(1);
 
         printAllStudents();
     }
@@ -46,19 +50,48 @@ public class Consumer {
         printHLine("");
     }
 
-    private static Response makePost(String url, Student student) {
+    private static void getStudent(int id) {
+        printHLine("GET STUDENT ID: " + id);
+        Response response = makeGet("/" + id);
+        if (response.getStatusInfo().equals(Response.Status.OK)) {
+            System.out.println(response.readEntity(new GenericType<Student>() {
+            }));
+        }
+        printHLine("Status: " + response.getStatusInfo());
+        printHLine("");
+    }
+
+    private static void addStudent(Student student) {
+        printHLine("ADD NEW STUDENT");
+
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(URL);
 
         Response response = target
-                .path(url)
+                .path("/")
                 .request()
                 .header("Authorization", jwtToken)
                 .post(Entity.entity(student, MediaType.APPLICATION_JSON_TYPE));
 
         client.close();
+    }
 
-        return response;
+    private static void deleteStudent(int id) {
+        printHLine("DELETE STUDENT ID: " + id);
+
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(URL);
+
+        Response response = target
+                .path("/" + id)
+                .request()
+                .header("Authorization", jwtToken)
+                .delete();
+
+        printHLine("Status: " + response.getStatusInfo());
+
+        client.close();
+        printHLine("");
     }
 
     private static Response makeGet(String url) {
@@ -100,12 +133,13 @@ public class Consumer {
         } else {
             newText = " " + text + " ";
         }
-
         StringBuilder output = new StringBuilder();
-        int offset = (width - text.length()) / 2;
+        int offset = (width - newText.length()) / 2;
         for (int i = 0; i < offset; i++) output.append(sign);
         output.append(newText);
         for (int i = 0; i < offset; i++) output.append(sign);
+
+        if (text.length() % 2 == 1) output.append(sign);
 
         System.out.println(output);
     }
