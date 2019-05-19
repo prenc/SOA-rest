@@ -28,7 +28,7 @@
     <artifactId>students-ear</artifactId>
     <packaging>ear</packaging>
 
-    <name>students: ear module</name>
+    <name>students: EAR Module</name>
 
     <url>http://wildfly.org</url>
     <licenses>
@@ -45,17 +45,18 @@
             <artifactId>rest-api</artifactId>
             <type>war</type>
         </dependency>
-        <dependency>
-            <groupId>soap</groupId>
-            <artifactId>soap-api</artifactId>
-            <type>ejb</type>
-        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>soap</groupId>-->
+        <!--<artifactId>soap-api</artifactId>-->
+        <!--<type>ejb</type>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>soap</groupId>
             <artifactId>students-model</artifactId>
             <type>ejb</type>
         </dependency>
-
     </dependencies>
 
     <build>
