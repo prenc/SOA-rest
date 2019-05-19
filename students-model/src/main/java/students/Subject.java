@@ -1,12 +1,10 @@
 package students;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.validation.constraints.NotNull;
 
-@XmlType(name = "subject")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Subject {
+
+    @NotNull
     private String name;
 
     public Subject() {
@@ -18,6 +16,10 @@ public class Subject {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

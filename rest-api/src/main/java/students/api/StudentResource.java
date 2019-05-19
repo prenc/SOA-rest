@@ -93,7 +93,6 @@ public class StudentResource {
         if (school.containsKey(id)) {
             return Response.status(Response.Status.OK).entity(school.get(id)).build();
         }
-
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
@@ -156,7 +155,7 @@ public class StudentResource {
             ),
             @ApiResponse(
                     code = 500,
-                    message = "This should never happen"
+                    message = "This should have never happened"
             )
     })
     public Response updateStudent(

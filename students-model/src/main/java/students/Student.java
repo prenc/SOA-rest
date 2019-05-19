@@ -1,17 +1,12 @@
 package students;
 
-import com.sun.istack.internal.Nullable;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 
-@XmlType(name = "student")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Student {
 
     private String name;
@@ -21,12 +16,8 @@ public class Student {
     @Min(150)
     private int height;
 
-    @Nullable
     private String avatar;
 
-
-    @XmlElementWrapper
-    @XmlElement(name = "subjects")
     private ArrayList<Subject> subjects;
 
     public Student() {

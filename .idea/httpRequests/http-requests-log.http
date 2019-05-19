@@ -4,6 +4,12 @@ Cache-Control: no-cache
 
 ###
 
+GET http://localhost:8080/rest-api/school/4
+Accept: */*
+Cache-Control: no-cache
+
+###
+
 GET http://localhost:8080/rest-api/school/3
 Accept: */*
 Cache-Control: no-cache
