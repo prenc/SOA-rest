@@ -20,15 +20,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>students</artifactId>
         <groupId>soap</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>students</artifactId>
+        <version>1.0</version>
     </parent>
 
     <artifactId>students-ear</artifactId>
     <packaging>ear</packaging>
 
-    <name>students: EAR Module</name>
+    <name>students: ear module</name>
 
     <url>http://wildfly.org</url>
     <licenses>
@@ -40,18 +40,22 @@
     </licenses>
 
     <dependencies>
-
-        <!-- Depend on the ejb module and war so that we can package them -->
         <dependency>
             <groupId>soap</groupId>
-            <artifactId>students-web</artifactId>
+            <artifactId>rest-api</artifactId>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>soap</groupId>
-            <artifactId>students-ejb</artifactId>
+            <artifactId>soap-api</artifactId>
             <type>ejb</type>
         </dependency>
+        <dependency>
+            <groupId>soap</groupId>
+            <artifactId>students-model</artifactId>
+            <type>ejb</type>
+        </dependency>
+
     </dependencies>
 
     <build>

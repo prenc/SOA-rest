@@ -6,16 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="rest-api" />
+        <module name="soap-api" />
+        <module name="soap-connector" />
         <module name="students-ear" />
-        <module name="students-ejb" />
-        <module name="students-web" />
+        <module name="students-model" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="students" target="1.7" />
-      <module name="students-ear" target="1.7" />
-      <module name="students-ejb" target="8" />
-      <module name="students-web" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>
