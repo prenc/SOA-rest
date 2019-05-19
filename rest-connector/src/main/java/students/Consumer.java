@@ -126,7 +126,7 @@ public class Consumer {
 
     private static void printHLine(String text) {
         char sign = '$';
-        int width = 40;
+        int width = 50;
         String newText;
         if (text.length() == 0) {
             newText = text;

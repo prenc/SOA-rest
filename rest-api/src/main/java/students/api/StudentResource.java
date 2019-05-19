@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.jaxrs.PATCH;
+import students.School;
 import students.Student;
-import students.Subject;
 import students.auth.JWTTokenNeeded;
 import students.auth.KeyGenerator;
 
@@ -22,19 +22,16 @@ import java.io.IOException;
 import java.security.Key;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Date;
+import java.util.List;
 
 @Path("/school")
 @Api(value = "Students resource")
 public class StudentResource {
-
-    private HashMap<Integer, Student> school = new HashMap<>();
-
-    public StudentResource() {
-        enroll(new Student("Jasiek", 185, new ArrayList<>(Collections.singletonList(new Subject("PE")))));
-        enroll(new Student("Malgoska", 166, new ArrayList<>(Collections.singletonList(new Subject("Religion")))));
-        enroll(new Student("Baba Jaga", 175, new ArrayList<>(Arrays.asList(new Subject("Math"), new Subject("Religion")))));
-    }
+    @Inject
+    private School school;
 
     @Context
     UriInfo uriInfo;
@@ -62,7 +59,7 @@ public class StudentResource {
             @Valid
                     Student student
     ) {
-        enroll(student);
+        school.enroll(student);
         return student;
     }
 
@@ -283,9 +280,5 @@ public class StudentResource {
                 .setExpiration(Date.from(LocalDateTime.now().plusMinutes(15L).atZone(ZoneId.systemDefault()).toInstant()))
                 .signWith(key)
                 .compact();
-    }
-
-    private void enroll(Student s) {
-        school.put(school.size() + 1, s);
     }
 }
