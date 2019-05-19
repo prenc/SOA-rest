@@ -1,0 +1,13 @@
+{
+  "name": "jaga",
+  "height": 175,
+  "avatar": null,
+  "subjects": [
+    {
+      "name": "Math"
+    },
+    {
+      "name": "Religion"
+    }
+  ]
+}

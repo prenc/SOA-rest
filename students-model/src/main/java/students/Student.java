@@ -1,5 +1,10 @@
 package students;
 
+import com.sun.istack.internal.Nullable;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,8 +15,16 @@ import java.util.Comparator;
 public class Student {
 
     private String name;
+
+    @NotNull
+    @Max(250)
+    @Min(150)
     private int height;
+
+    @Nullable
     private String avatar;
+
+
     @XmlElementWrapper
     @XmlElement(name = "subjects")
     private ArrayList<Subject> subjects;
@@ -19,7 +32,7 @@ public class Student {
     public Student() {
     }
 
-    Student(String name, int height, ArrayList<Subject> subjects) {
+    public Student(String name, int height, ArrayList<Subject> subjects) {
         this.name = name;
         this.height = height;
         this.subjects = subjects;
@@ -42,12 +55,24 @@ public class Student {
         return name;
     }
 
-    int getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    ArrayList<Subject> getSubjects() {
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public ArrayList<Subject> getSubjects() {
         return subjects;
+    }
+
+    public void setSubjects(ArrayList<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     static class byName implements Comparator<Student> {

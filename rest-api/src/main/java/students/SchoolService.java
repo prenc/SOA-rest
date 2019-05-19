@@ -17,7 +17,7 @@ public class SchoolService extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
-        Set<Class<?>> s = new HashSet<Class<?>>();
+        Set<Class<?>> s = new HashSet<>();
         s.add(StudentResource.class);
         s.add(JWTTokenNeededFilter.class);
 
@@ -32,10 +32,10 @@ public class SchoolService extends Application {
         beanConfig.setVersion("1.0.2");
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setHost("localhost:8080");
-        beanConfig.setBasePath("/students-rest");
+        beanConfig.setBasePath("/rest-api");
 
         beanConfig.setResourcePackage("soap");
-        beanConfig.setTitle("School swagger docs");
+        beanConfig.setTitle("Swagger docs - school project");
         beanConfig.setScan(true);
     }
 }
