@@ -34,7 +34,7 @@ public class SchoolService extends Application {
         beanConfig.setHost("localhost:8080");
         beanConfig.setBasePath("/rest-api");
 
-        beanConfig.setResourcePackage("soap");
+        beanConfig.setResourcePackage("students");
         beanConfig.setTitle("Swagger docs - school project");
         beanConfig.setScan(true);
     }

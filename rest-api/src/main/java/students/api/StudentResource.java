@@ -23,10 +23,9 @@ import java.io.IOException;
 import java.security.Key;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
 
 @Path("/school")
 @Api(value = "Students resource")
@@ -252,7 +251,7 @@ public class StudentResource {
     }
 
     @DELETE
-    @Path("/")
+    @Path("/clear")
     @Produces(MediaType.APPLICATION_JSON)
     @JWTTokenNeeded
     @ApiOperation(
@@ -271,7 +270,7 @@ public class StudentResource {
                     response = Boolean.class
             )
     })
-    public Response deleteStudent() {
+    public Response purgeStudents() {
         if (school.isEmpty()) {
             return Response.status(Response.Status.NO_CONTENT).entity(false).build();
         } else {
@@ -286,13 +285,13 @@ public class StudentResource {
     @ApiOperation(
             value = "Returns all students",
             notes = "can return list of students having same name by providing queryParam",
-            response = List.class
+            response = HashMap.class
     )
     @ApiResponses(value = {
             @ApiResponse(
                     code = 200,
                     message = "Students returned",
-                    response = List.class
+                    response = HashMap.class
             ),
             @ApiResponse(
                     code = 404,
@@ -303,10 +302,10 @@ public class StudentResource {
             @QueryParam("studentName") final String studentName
     ) {
         if (studentName != null) {
-            List<Student> students = new ArrayList<>();
+            HashMap<Integer, Student> students = new HashMap<>();
             for (Student student : school.values()) {
                 if (student.getName().equals(studentName)) {
-                    students.add(student);
+                    students.put(students.size() + 1, student);
                 }
             }
 
@@ -316,7 +315,7 @@ public class StudentResource {
                 return Response.status(Response.Status.OK).entity(students).build();
             }
         } else {
-            return Response.status(Response.Status.OK).entity(school.values()).build();
+            return Response.status(Response.Status.OK).entity(school).build();
         }
     }
 

@@ -15,10 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Consumer {
     private static final String URL = "http://localhost:8080/rest-api/school";
@@ -32,7 +29,7 @@ public class Consumer {
     private static Student s3 = new Student("Student3", 175, new ArrayList<>(Arrays.asList(new Subject("Math"), new Subject("Religion"))));
 
     public static void main(String[] args) {
-//        jwtToken = login("xxx", "xxx");
+        jwtToken = login("xxx", "xxx");
 
         addStudent(s1);
         addStudent(s2);
@@ -64,29 +61,52 @@ public class Consumer {
     }
 
     private static void printAllStudents() {
-        printHLine("ALL STUDENTS");
-        Response response = makeGet("/");
-        List<Student> studentList = response.readEntity(new GenericType<List<Student>>() {
+        printHLine("PRINT STUDENTS");
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(URL);
+        Response response = target
+                .path("/")
+                .request()
+                .get();
+
+        HashMap<Integer, Student> studentList = response.readEntity(new GenericType<HashMap<Integer, Student>>() {
         });
+
         StringBuilder output = new StringBuilder();
-        for (int i = 0; i < studentList.size(); i++) {
-            output.append(i + 1).append(": ").append(studentList.get(i)).append("\n");
+
+        if (!studentList.isEmpty()) {
+            for (Map.Entry<Integer, Student> studentEntry : studentList.entrySet()) {
+                output.append(studentEntry.getKey()).append(": ").append(studentEntry.getValue()).append("\n");
+            }
+
+            output.deleteCharAt(output.lastIndexOf("\n"));
         }
-        output.deleteCharAt(output.lastIndexOf("\n"));
+
         System.out.println(output);
+        printHLine("Status: " + response.getStatusInfo());
         printHLine("");
+        client.close();
     }
 
     private static void getStudent(int id) {
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(URL);
+
+        Response response = target
+                .path("/" + id)
+                .request()
+                .get();
+
         printHLine("GET STUDENT ID: " + id);
-        Response response = makeGet("/" + id);
-        if (response.getStatusInfo().equals(Response.Status.OK)) {
-            System.out.println(response.readEntity(new GenericType<Student>() {
-            }));
+        if (response.getStatusInfo() == Response.Status.OK) {
+            Student student = response.readEntity(Student.class);
+            System.out.println(student);
         }
         printHLine("Status: " + response.getStatusInfo());
         printHLine("");
+        client.close();
     }
+
 
     private static void getProtoStudent() {
         printHLine("GET PROTO STUDENT (JAX-RS)");
@@ -142,7 +162,7 @@ public class Consumer {
 
         client.close();
 
-        printHLine("Status" + response.getStatusInfo().toString());
+        printHLine("Status: " + response.getStatusInfo().toString());
         printHLine("");
     }
 
@@ -171,7 +191,7 @@ public class Consumer {
         ResteasyWebTarget target = client.target(URL);
 
         Response response = target
-                .path("/")
+                .path("/clear")
                 .request()
                 .header("Authorization", jwtToken)
                 .delete();
@@ -180,20 +200,6 @@ public class Consumer {
 
         client.close();
         printHLine("");
-    }
-
-    private static Response makeGet(String url) {
-        ResteasyClient client = new ResteasyClientBuilder().build();
-        ResteasyWebTarget target = client.target(URL);
-
-        Response response = target
-                .path(url)
-                .request()
-                .get();
-
-        client.close();
-
-        return response;
     }
 
     private static String login(String login, String password) {
