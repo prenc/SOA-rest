@@ -1,0 +1,14 @@
+syntax = "proto3";
+package students;
+option java_outer_classname = "SchoolProto";
+
+message Student {
+    string name = 1;
+    int32 height = 2;
+    string avatar = 3;
+    repeated Subject subjects = 4;
+
+    message Subject {
+        string name = 1;
+    }
+}

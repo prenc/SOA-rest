@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.jaxrs.PATCH;
 import students.School;
+import students.SchoolProto;
 import students.Student;
 import students.auth.JWTTokenNeeded;
 import students.auth.KeyGenerator;
@@ -131,6 +132,24 @@ public class StudentResource {
         }
     }
 
+    @GET
+    @Path("/proto")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response getProtoStudent() {
+        SchoolProto.Student.Builder builder = SchoolProto.Student.newBuilder();
+
+        SchoolProto.Student.Subject.Builder subject = SchoolProto.Student.Subject.newBuilder();
+        subject.setName("SUBJECT CREATED IN PROTO");
+
+        builder.addSubjects(subject);
+
+        builder.setName("Madzia").setHeight(169);
+
+        SchoolProto.Student s = builder.build();
+
+        return Response.ok(s.toByteArray(), MediaType.APPLICATION_OCTET_STREAM).build();
+    }
+
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -229,6 +248,35 @@ public class StudentResource {
             return Response.status(Response.Status.OK).entity(true).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).entity(false).build();
+        }
+    }
+
+    @DELETE
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    @JWTTokenNeeded
+    @ApiOperation(
+            value = "Clears all students",
+            response = Boolean.class
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    code = 200,
+                    message = "All students are deleted",
+                    response = Boolean.class
+            ),
+            @ApiResponse(
+                    code = 204,
+                    message = "No students were cleared",
+                    response = Boolean.class
+            )
+    })
+    public Response deleteStudent() {
+        if (school.isEmpty()) {
+            return Response.status(Response.Status.NO_CONTENT).entity(false).build();
+        } else {
+            school.clear();
+            return Response.status(Response.Status.OK).entity(true).build();
         }
     }
 
