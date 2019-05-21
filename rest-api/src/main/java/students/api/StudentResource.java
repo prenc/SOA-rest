@@ -56,12 +56,12 @@ public class StudentResource {
                     response = Student.class
             )
     })
-    public Student addStudent(
+    public Response addStudent(
             @Valid
                     Student student
     ) {
         school.enroll(student);
-        return student;
+        return Response.status(Response.Status.CREATED).entity(student).build();
     }
 
     @GET

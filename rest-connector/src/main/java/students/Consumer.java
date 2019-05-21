@@ -21,7 +21,7 @@ public class Consumer {
     private static final String URL = "http://localhost:8080/rest-api/school";
     private static String jwtToken;
 
-    private static Student exampleS = new Student("Student4", 177, new ArrayList<>(Arrays.asList(new Subject("PE"),
+    private static Student exampleS = new Student("Student4", 167, new ArrayList<>(Arrays.asList(new Subject("PE"),
             new Subject("trele"))));
 
     private static Student s1 = new Student("Student1", 185, new ArrayList<>(Collections.singletonList(new Subject("PE"))));
@@ -29,7 +29,9 @@ public class Consumer {
     private static Student s3 = new Student("Student3", 175, new ArrayList<>(Arrays.asList(new Subject("Math"), new Subject("Religion"))));
 
     public static void main(String[] args) {
-        jwtToken = login("xxx", "xxx");
+//        jwtToken = login("xxx", "xxx");
+
+        System.out.println(jwtToken);
 
         addStudent(s1);
         addStudent(s2);
@@ -52,10 +54,10 @@ public class Consumer {
         getProtoStudent();
 
         getAvatar();
-
-        purgeStudents();
-
-        purgeStudents();
+//
+//        purgeStudents();
+//
+//        purgeStudents();
 
         printAllStudents();
     }

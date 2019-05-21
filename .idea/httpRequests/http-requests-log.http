@@ -1,3 +1,149 @@
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+Content-Type: application/json
+
+{"name":"Student2","height":188,"subjects":[{"name":"Religion"}]}
+
+<> 2019-05-21T030002.201.json
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+Content-Type: application/json
+
+{"name":"Student2","height":100,"subjects":[{"name":"Religion"}]}
+
+<> 2019-05-21T025950.400.txt
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+Content-Type: application/json
+
+{"name":"Student2","height":100,"subjects":[{"name":"Religion"}]}
+
+<> 2019-05-21T025821.400.txt
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+Content-Type: application/json
+
+{"name":"Student2","height":166,"subjects":[{"name":"Religion"}]}
+
+<> 2019-05-21T025814.201.json
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+Content-Type: application/json
+
+{
+"name": "Madzia",
+"height": 166,
+"subjects" : [
+  "name": "SUBJECT CREATED IN PROTO"
+]
+}
+
+<> 2019-05-21T025743.400.html
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+Content-Type: application/json
+
+{
+"name": "Madzia",
+"height": 166,
+"subjects" : [
+  "name",: "SUBJECT CREATED IN PROTO"
+]
+}
+
+<> 2019-05-21T025734.400.html
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+Content-Type: application/json
+
+{
+name: "Madzia",
+height: 166,
+subjects : [
+  name: "SUBJECT CREATED IN PROTO"
+]
+}
+
+<> 2019-05-21T025649.400.html
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+
+{
+name: "Madzia",
+height: 166,
+subjects : [
+  name: "SUBJECT CREATED IN PROTO"
+]
+}
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eHgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVzdC1hcGkvc2Nob29sL2xvZ2luIiwiaWF0IjoxNTU4NDIxNzEwLCJleHAiOjE1NTg0MjI2MTB9.460NOb8seEO4FkXJHKQeT3to2xNBtlYe20E6DaAHcII
+
+{
+name: "Madzia",
+height: 100,
+subjects : [
+  name: "SUBJECT CREATED IN PROTO"
+]
+}
+
+###
+
+POST http://localhost:8080/rest-api/school
+Accept: */*
+Cache-Control: no-cache
+
+{
+name: "Madzia",
+height: 100,
+subjects : [
+  name: "SUBJECT CREATED IN PROTO"
+]
+}
+
+###
+
 GET http://localhost:8080/rest-api/school/4
 Accept: */*
 Cache-Control: no-cache
