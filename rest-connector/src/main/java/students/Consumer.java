@@ -29,7 +29,7 @@ public class Consumer {
     private static Student s3 = new Student("Student3", 175, new ArrayList<>(Arrays.asList(new Subject("Math"), new Subject("Religion"))));
 
     public static void main(String[] args) {
-//        jwtToken = login("xxx", "xxx");
+        jwtToken = login("xxx", "xxx");
 
         System.out.println(jwtToken);
 
@@ -54,7 +54,7 @@ public class Consumer {
         getProtoStudent();
 
         getAvatar();
-//
+
 //        purgeStudents();
 //
 //        purgeStudents();
