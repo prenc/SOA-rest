@@ -10,9 +10,14 @@
         <module name="rest-connector" />
         <module name="soap-api" />
         <module name="soap-connector" />
+        <module name="students-dao" />
         <module name="students-ear" />
+        <module name="students-jpa" />
         <module name="students-model" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="students-model (1)" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

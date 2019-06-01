@@ -41,6 +41,8 @@
         <module>rest-connector</module>
         <module>students-model</module>
         <module>students-ear</module>
+        <module>students-dao</module>
+        <module>students-jpa</module>
     </modules>
 
     <properties>
@@ -101,6 +103,20 @@
                 <version>${project.version}</version>
                 <type>war</type>
                 <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>soap</groupId>
+                <artifactId>students-jpa</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+
+            <dependency>
+                <groupId>soap</groupId>
+                <artifactId>students-dao</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
             </dependency>
 
             <!-- JBoss distributes a complete set of Java EE 7 APIs including

@@ -5,6 +5,8 @@
     <file type="ejb" url="file://$PROJECT_DIR$/rest-connector" />
     <file type="ejb" url="file://$PROJECT_DIR$/soap-api" />
     <file type="ejb" url="file://$PROJECT_DIR$/soap-connector" />
+    <file type="ejb" url="file://$PROJECT_DIR$/students-dao" />
+    <file type="ejb" url="file://$PROJECT_DIR$/students-jpa" />
     <file type="ejb" url="file://$PROJECT_DIR$/students-model" />
     <file type="javaeeApplication" url="file://$PROJECT_DIR$/students-ear" />
     <file type="web" url="file://$PROJECT_DIR$/rest-api" />
