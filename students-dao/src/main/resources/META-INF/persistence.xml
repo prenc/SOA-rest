@@ -12,7 +12,7 @@
         <class>students.SubjectJPA</class>
         <class>students.StudentJPA</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://msql.agh.edu.pl:3306/prenc1"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql.agh.edu.pl:3306/prenc1"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="prenc1"/>
             <property name="javax.persistence.jdbc.password" value="TfvaGjd4cmGLakz4"/>

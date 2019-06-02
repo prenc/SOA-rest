@@ -52,17 +52,17 @@
             <type>ejb</type>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>soap</groupId>-->
-        <!--            <artifactId>students-jpa</artifactId>-->
-        <!--            <type>ejb</type>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>soap</groupId>
+            <artifactId>students-jpa</artifactId>
+            <type>ejb</type>
+        </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>soap</groupId>-->
-        <!--            <artifactId>students-model</artifactId>-->
-        <!--            <type>ejb</type>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>soap</groupId>
+            <artifactId>students-model</artifactId>
+            <type>ejb</type>
+        </dependency>
 
     </dependencies>
 
