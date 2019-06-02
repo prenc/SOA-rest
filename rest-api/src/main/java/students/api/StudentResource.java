@@ -35,7 +35,7 @@ public class StudentResource {
     @Inject
     private School school;
 
-    @EJB
+    @EJB(name = "studentsDao")
     private StudentsDao studentsDao = new StudentsDao();
 
     @Context

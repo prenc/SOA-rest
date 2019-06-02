@@ -46,17 +46,24 @@
             <type>war</type>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>soap</groupId>-->
-        <!--<artifactId>soap-api</artifactId>-->
-        <!--<type>ejb</type>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>soap</groupId>
-            <artifactId>students-model</artifactId>
+            <artifactId>students-dao</artifactId>
             <type>ejb</type>
         </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>soap</groupId>-->
+        <!--            <artifactId>students-jpa</artifactId>-->
+        <!--            <type>ejb</type>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>soap</groupId>-->
+        <!--            <artifactId>students-model</artifactId>-->
+        <!--            <type>ejb</type>-->
+        <!--        </dependency>-->
+
     </dependencies>
 
     <build>
