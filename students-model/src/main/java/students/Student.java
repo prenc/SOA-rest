@@ -9,6 +9,8 @@ import java.util.Comparator;
 
 public class Student {
 
+    private int id;
+
     private String name;
 
     @NotNull
@@ -64,6 +66,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     static class byName implements Comparator<Student> {

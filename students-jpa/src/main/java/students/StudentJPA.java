@@ -1,7 +1,11 @@
 package students;
 
 
+import org.modelmapper.ModelMapper;
+
 import javax.persistence.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "t_students")
@@ -64,5 +68,28 @@ public class StudentJPA {
 
     public void setHeight(Integer height) {
         this.height = height;
+    }
+
+    static public class Mapper {
+
+        public StudentJPA DTOtoEntity(Student student) {
+            ModelMapper modelMapper = new ModelMapper();
+            return modelMapper.map(student, StudentJPA.class);
+        }
+
+        public Student EntitytoDTO(StudentJPA studentJPA) {
+            ModelMapper modelMapper = new ModelMapper();
+            return modelMapper.map(studentJPA, Student.class);
+        }
+
+        public List<Student> EntitytoDTO(List<StudentJPA> sj) {
+            ModelMapper modelMapper = new ModelMapper();
+            return sj.stream().map(s -> modelMapper.map(s, Student.class)).collect(Collectors.toList());
+        }
+
+        public List<StudentJPA> DTOtoEntity(List<Student> s) {
+            ModelMapper modelMapper = new ModelMapper();
+            return s.stream().map(st -> modelMapper.map(st, StudentJPA.class)).collect(Collectors.toList());
+        }
     }
 }
