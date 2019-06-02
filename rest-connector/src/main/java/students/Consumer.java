@@ -30,36 +30,36 @@ public class Consumer {
 
     public static void main(String[] args) {
         jwtToken = login("xxx", "xxx");
+//
+//        System.out.println(jwtToken);
+//
+//        addStudent(s1);
+//        addStudent(s2);
+//        addStudent(s3);
 
-        System.out.println(jwtToken);
-
-        addStudent(s1);
-        addStudent(s2);
-        addStudent(s3);
-
-        printAllStudents();
+//        printAllStudents();
 
         addStudent(exampleS);
 
-        getStudent(1);
-
-        getStudent(6);
-
-        printAllStudents();
-
-        deleteStudent(1);
-
-        printAllStudents();
-
-        getProtoStudent();
-
-        getAvatar();
-
-//        purgeStudents();
+//        getStudent(1);
 //
-//        purgeStudents();
-
-        printAllStudents();
+//        getStudent(6);
+//
+//        printAllStudents();
+//
+//        deleteStudent(1);
+//
+//        printAllStudents();
+//
+//        getProtoStudent();
+//
+//        getAvatar();
+//
+////        purgeStudents();
+////
+////        purgeStudents();
+//
+//        printAllStudents();
     }
 
     private static void printAllStudents() {

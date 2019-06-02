@@ -9,9 +9,11 @@ import io.swagger.jaxrs.PATCH;
 import students.School;
 import students.SchoolProto;
 import students.Student;
+import students.StudentsDao;
 import students.auth.JWTTokenNeeded;
 import students.auth.KeyGenerator;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -32,6 +34,9 @@ import java.util.HashMap;
 public class StudentResource {
     @Inject
     private School school;
+
+    @EJB
+    private StudentsDao studentsDao = new StudentsDao();
 
     @Context
     UriInfo uriInfo;
@@ -60,7 +65,7 @@ public class StudentResource {
             @Valid
                     Student student
     ) {
-        school.enroll(student);
+        studentsDao.add(student);
         return Response.status(Response.Status.CREATED).entity(student).build();
     }
 

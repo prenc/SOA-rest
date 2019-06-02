@@ -52,7 +52,7 @@ abstract class Dao {
             return null;
         }
     }
-    
+
     protected abstract <T> Class<T> getType();
 
 }
