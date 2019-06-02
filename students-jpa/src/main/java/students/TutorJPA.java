@@ -6,16 +6,17 @@ import javax.persistence.*;
 @Table(name = "t_tutors")
 public class TutorJPA {
 
+    @Id
     @GeneratedValue
     private Integer id;
 
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "classID")
+    @JoinColumn(name = "t_classes_id",
+            referencedColumnName = "id")
     private ClassJPA group;
 
-    @Id
     public Integer getId() {
         return id;
     }

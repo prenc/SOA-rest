@@ -6,7 +6,9 @@ import javax.persistence.*;
 @Table(name = "t_classes")
 public class ClassJPA {
 
+    @Id
     @GeneratedValue
+    @Column(name = "id")
     private Integer id;
 
     private String name;
@@ -14,7 +16,6 @@ public class ClassJPA {
     @OneToOne(mappedBy = "group")
     private TutorJPA tutor;
 
-    @Id
     public Integer getId() {
         return id;
     }
