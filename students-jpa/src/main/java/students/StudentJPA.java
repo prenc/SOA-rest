@@ -2,11 +2,10 @@ package students;
 
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "t_students")
-public class StudentJPA implements Serializable {
+public class StudentJPA {
     @Id
     @GeneratedValue
     private Integer id;
@@ -16,7 +15,8 @@ public class StudentJPA implements Serializable {
 
     private String avatar;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = ClassJPA.class)
+    @JoinColumn(name = "classID")
     private ClassJPA group;
 
     public StudentJPA() {

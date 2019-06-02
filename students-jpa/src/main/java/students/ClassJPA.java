@@ -11,7 +11,7 @@ public class ClassJPA {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(mappedBy = "group")
     private TutorJPA tutor;
 
     @Id

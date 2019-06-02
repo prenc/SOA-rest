@@ -12,6 +12,7 @@ public class TutorJPA {
     private String name;
 
     @OneToOne
+    @JoinColumn(name = "classID")
     private ClassJPA group;
 
     @Id
