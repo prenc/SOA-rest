@@ -15,7 +15,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Consumer {
     private static final String URL = "http://localhost:8080/rest-api/school";
@@ -33,11 +36,11 @@ public class Consumer {
 //
 //        System.out.println(jwtToken);
 //
-//        addStudent(s1);
-//        addStudent(s2);
-//        addStudent(s3);
+        addStudent(s1);
+        addStudent(s2);
+        addStudent(s3);
 
-//        printAllStudents();
+        printAllStudents();
 
         addStudent(exampleS);
 
@@ -71,14 +74,14 @@ public class Consumer {
                 .request()
                 .get();
 
-        HashMap<Integer, Student> studentList = response.readEntity(new GenericType<HashMap<Integer, Student>>() {
+        List<Student> studentList = response.readEntity(new GenericType<List<Student>>() {
         });
 
         StringBuilder output = new StringBuilder();
 
         if (!studentList.isEmpty()) {
-            for (Map.Entry<Integer, Student> studentEntry : studentList.entrySet()) {
-                output.append(studentEntry.getKey()).append(": ").append(studentEntry.getValue()).append("\n");
+            for (Student student : studentList) {
+                output.append(student).append("\n");
             }
 
             output.deleteCharAt(output.lastIndexOf("\n"));

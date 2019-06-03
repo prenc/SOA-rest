@@ -320,7 +320,7 @@ public class StudentResource {
                 return Response.status(Response.Status.OK).entity(students).build();
             }
         } else {
-            return Response.status(Response.Status.OK).entity(school).build();
+            return Response.status(Response.Status.OK).entity(studentsDao.getAll()).build();
         }
     }
 

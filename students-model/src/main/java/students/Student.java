@@ -1,8 +1,5 @@
 package students;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -13,9 +10,6 @@ public class Student {
 
     private String name;
 
-    @NotNull
-    @Max(250)
-    @Min(150)
     private int height;
 
     private String avatar;
@@ -23,6 +17,11 @@ public class Student {
     private ArrayList<Subject> subjects;
 
     public Student() {
+    }
+
+    public Student(String name, int height) {
+        this.name = name;
+        this.height = height;
     }
 
     public Student(String name, int height, ArrayList<Subject> subjects) {
@@ -41,7 +40,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student(" + getName() + ", " + getHeight() + ", " + subjects.toString() + ")";
+        return "Student(" + getName() + ", " + getHeight() + ")";
     }
 
     public String getName() {
@@ -68,13 +67,6 @@ public class Student {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     static class byName implements Comparator<Student> {
         @Override

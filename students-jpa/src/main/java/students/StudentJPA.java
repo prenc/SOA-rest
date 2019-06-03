@@ -17,6 +17,7 @@ public class StudentJPA {
     private String name;
     private Integer height;
 
+    @Lob
     private String avatar;
 
     @ManyToOne(targetEntity = ClassJPA.class)
@@ -77,12 +78,12 @@ public class StudentJPA {
             return modelMapper.map(student, StudentJPA.class);
         }
 
-        public Student EntitytoDTO(StudentJPA studentJPA) {
+        public Student EntityToDTO(StudentJPA studentJPA) {
             ModelMapper modelMapper = new ModelMapper();
             return modelMapper.map(studentJPA, Student.class);
         }
 
-        public List<Student> EntitytoDTO(List<StudentJPA> sj) {
+        public List<Student> EntityToDTO(List<StudentJPA> sj) {
             ModelMapper modelMapper = new ModelMapper();
             return sj.stream().map(s -> modelMapper.map(s, Student.class)).collect(Collectors.toList());
         }

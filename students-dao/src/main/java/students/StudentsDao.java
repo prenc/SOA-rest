@@ -24,7 +24,7 @@ public class StudentsDao extends Dao {
 
         this.create(sJPA);
 
-        student.setId(sJPA.getId());
+//        student.setId(sJPA.getId());
     }
 
     public boolean update(Integer id, Student student) {
@@ -64,7 +64,7 @@ public class StudentsDao extends Dao {
 
         StudentJPA.Mapper sm = new StudentJPA.Mapper();
 
-        return sm.EntitytoDTO(results);
+        return sm.EntityToDTO(results);
     }
 
     public List<Student> getAllByName(String name) {
@@ -83,7 +83,7 @@ public class StudentsDao extends Dao {
 
         StudentJPA.Mapper sm = new StudentJPA.Mapper();
 
-        return sm.EntitytoDTO(results);
+        return sm.EntityToDTO(results);
     }
 
     public Student getOne(Integer id) {
@@ -91,7 +91,7 @@ public class StudentsDao extends Dao {
 
         StudentJPA studentJPA = this.entityManager.find(StudentJPA.class, id);
 
-        return sm.EntitytoDTO(studentJPA);
+        return sm.EntityToDTO(studentJPA);
     }
 
 }
