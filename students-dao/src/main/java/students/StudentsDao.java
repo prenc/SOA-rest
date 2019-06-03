@@ -6,6 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -18,13 +19,19 @@ public class StudentsDao extends Dao {
     }
 
     public void add(Student student) {
-        StudentJPA.Mapper sm = new StudentJPA.Mapper();
 
-        StudentJPA sJPA = sm.DTOtoEntity(student);
+        StudentJPA sJPA = StudentJPA.Mapper.DTOtoEntity(student);
+
+        List<SubjectJPA> subjects = SubjectJPA.Mapper.DTOtoEntity(student.getSubjects());
+
+        for (SubjectJPA subject : subjects) {
+            ArrayList<StudentJPA> s = new ArrayList<>();
+            s.add(sJPA);
+            subject.setStudentId(s);
+            this.update(subject);
+        }
 
         this.create(sJPA);
-
-//        student.setId(sJPA.getId());
     }
 
     public boolean update(Integer id, Student student) {

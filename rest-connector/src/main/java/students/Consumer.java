@@ -33,9 +33,7 @@ public class Consumer {
 
     public static void main(String[] args) {
         jwtToken = login("xxx", "xxx");
-//
-//        System.out.println(jwtToken);
-//
+
         addStudent(s1);
         addStudent(s2);
         addStudent(s3);
@@ -45,24 +43,11 @@ public class Consumer {
         addStudent(exampleS);
 
         getStudent("Student3");
-//
-//        getStudent(6);
-//
-//        printAllStudents();
-//
-//        deleteStudent(1);
-//
-//        printAllStudents();
-//
-//        getProtoStudent();
-//
-//        getAvatar();
-//
-////        purgeStudents();
-////
-////        purgeStudents();
-//
-//        printAllStudents();
+
+
+//        purgeStudents();
+
+        printAllStudents();
     }
 
     private static void printAllStudents() {

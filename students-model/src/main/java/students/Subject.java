@@ -4,6 +4,8 @@ import javax.validation.constraints.NotNull;
 
 public class Subject {
 
+    private int id;
+
     @NotNull
     private String name;
 

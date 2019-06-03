@@ -6,14 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="students-ear" />
         <module name="rest-api" />
-        <module name="rest-connector" />
+        <module name="students-model" />
+        <module name="students-jpa" />
         <module name="soap-api" />
         <module name="soap-connector" />
+        <module name="rest-connector" />
         <module name="students-dao" />
-        <module name="students-ear" />
-        <module name="students-jpa" />
-        <module name="students-model" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

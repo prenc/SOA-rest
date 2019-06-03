@@ -73,23 +73,21 @@ public class StudentJPA {
 
     static public class Mapper {
 
-        public StudentJPA DTOtoEntity(Student student) {
-            ModelMapper modelMapper = new ModelMapper();
+        private static ModelMapper modelMapper = new ModelMapper();
+
+        public static StudentJPA DTOtoEntity(Student student) {
             return modelMapper.map(student, StudentJPA.class);
         }
 
-        public Student EntityToDTO(StudentJPA studentJPA) {
-            ModelMapper modelMapper = new ModelMapper();
+        public static Student EntityToDTO(StudentJPA studentJPA) {
             return modelMapper.map(studentJPA, Student.class);
         }
 
-        public List<Student> EntityToDTO(List<StudentJPA> sj) {
-            ModelMapper modelMapper = new ModelMapper();
+        public static List<Student> EntityToDTO(List<StudentJPA> sj) {
             return sj.stream().map(s -> modelMapper.map(s, Student.class)).collect(Collectors.toList());
         }
 
-        public List<StudentJPA> DTOtoEntity(List<Student> s) {
-            ModelMapper modelMapper = new ModelMapper();
+        public static List<StudentJPA> DTOtoEntity(List<Student> s) {
             return s.stream().map(st -> modelMapper.map(st, StudentJPA.class)).collect(Collectors.toList());
         }
     }
