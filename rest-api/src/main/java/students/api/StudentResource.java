@@ -307,18 +307,7 @@ public class StudentResource {
             @QueryParam("studentName") final String studentName
     ) {
         if (studentName != null) {
-            HashMap<Integer, Student> students = new HashMap<>();
-            for (Student student : school.values()) {
-                if (student.getName().equals(studentName)) {
-                    students.put(students.size() + 1, student);
-                }
-            }
-
-            if (students.isEmpty()) {
-                return Response.status(Response.Status.NOT_FOUND).build();
-            } else {
-                return Response.status(Response.Status.OK).entity(students).build();
-            }
+            return Response.status(Response.Status.OK).entity(studentsDao.getAllByName(studentName)).build();
         } else {
             return Response.status(Response.Status.OK).entity(studentsDao.getAll()).build();
         }

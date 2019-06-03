@@ -44,7 +44,7 @@ public class Consumer {
 
         addStudent(exampleS);
 
-//        getStudent(1);
+        getStudent("Student3");
 //
 //        getStudent(6);
 //
@@ -106,6 +106,27 @@ public class Consumer {
         if (response.getStatusInfo() == Response.Status.OK) {
             Student student = response.readEntity(Student.class);
             System.out.println(student);
+        }
+        printHLine("Status: " + response.getStatusInfo());
+        printHLine("");
+        client.close();
+    }
+
+    private static void getStudent(String name) {
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(URL);
+
+        Response response = target
+                .path("/")
+                .queryParam("studentName", name)
+                .request()
+                .get();
+
+        printHLine("GET STUDENT NAME: " + name);
+        if (response.getStatusInfo() == Response.Status.OK) {
+            List<Student> studentList = response.readEntity(new GenericType<List<Student>>() {
+            });
+            System.out.println(studentList);
         }
         printHLine("Status: " + response.getStatusInfo());
         printHLine("");
