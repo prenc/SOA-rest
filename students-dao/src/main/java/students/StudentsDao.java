@@ -38,6 +38,7 @@ public class StudentsDao extends Dao {
         });
 
         create(classJPA);
+        studentJPA.setGroup(classJPA);
         create(studentJPA);
     }
 
@@ -85,14 +86,17 @@ public class StudentsDao extends Dao {
         CriteriaQuery<StudentJPA> q = cb.createQuery(StudentJPA.class);
         Root<StudentJPA> c = q.from(StudentJPA.class);
         ParameterExpression<String> p = cb.parameter(String.class);
+        ParameterExpression<String> p2 = cb.parameter(String.class);
         Join<StudentJPA, SubjectJPA> subjects = c.join("subjectID", JoinType.LEFT);
+        Join<StudentJPA, ClassJPA> classes = c.join("group", JoinType.LEFT);
 
         Predicate predicate = cb.equal(subjects.get("name"), p);
+        Predicate predicate2 = cb.equal(classes.get("name"), p2);
 
-        q.select(c).distinct(true).where(predicate);
+        q.select(c).distinct(true).where(predicate, predicate2);
 
         TypedQuery<StudentJPA> query = entityManager.createQuery(q);
-        List<StudentJPA> results = query.setParameter(p, subject).getResultList();
+        List<StudentJPA> results = query.setParameter(p, subject).setParameter(p2, "A").getResultList();
 
         return StudentJPA.Mapper.EntityToDTO(results);
     }
