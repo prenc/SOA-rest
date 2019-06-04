@@ -21,15 +21,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class Consumer {
+
     private static final String URL = "http://localhost:8080/rest-api/school";
     private static String jwtToken;
 
-    private static Student exampleS = new Student("Student4", 167, new ArrayList<>(Arrays.asList(new Subject("PE"),
-            new Subject("History"))));
+    private static final MClass C1 = new MClass("A");
+    private static final MClass C2 = new MClass("B");
 
-    private static Student s1 = new Student("Student1", 185, new ArrayList<>(Collections.singletonList(new Subject("PE"))));
-    private static Student s2 = new Student("Student2", 166, new ArrayList<>(Collections.singletonList(new Subject("Religion"))));
-    private static Student s3 = new Student("Student3", 175, new ArrayList<>(Arrays.asList(new Subject("Math"), new Subject("Religion"))));
+    private static final Subject S1 = new Subject("RELIGION");
+    private static final Subject S2 = new Subject("PE");
+    private static final Subject S3 = new Subject("MATH");
+    private static final Subject S4 = new Subject("HISTORY");
+
+    private static final Student s1 = new Student("Student1", 185, new ArrayList<>(Collections.singletonList(S1)), C1);
+    private static final Student s2 = new Student("Student2", 166, new ArrayList<>(Collections.singletonList(S2)), C2);
+    private static final Student s3 = new Student("Student3", 175, new ArrayList<>(Arrays.asList(S1, S3, S4)), C1);
+    private static final Student s4 = new Student("Student4", 167, new ArrayList<>(Arrays.asList(S3, S4)), C2);
 
     public static void main(String[] args) {
         jwtToken = login("xxx", "xxx");
@@ -37,10 +44,10 @@ public class Consumer {
         addStudent(s1);
         addStudent(s2);
         addStudent(s3);
+        addStudent(s4);
 
         printAllStudents();
 
-        addStudent(exampleS);
 
         getStudent("Student3");
 

@@ -6,8 +6,6 @@ import java.util.Comparator;
 
 public class Student {
 
-    private int id;
-
     private String name;
 
     private int height;
@@ -15,6 +13,8 @@ public class Student {
     private String avatar;
 
     private ArrayList<Subject> subjects;
+
+    private MClass mClass;
 
     public Student() {
     }
@@ -28,6 +28,13 @@ public class Student {
         this.name = name;
         this.height = height;
         this.subjects = subjects;
+    }
+
+    public Student(String name, int height, ArrayList<Subject> subjects, MClass mClass) {
+        this.name = name;
+        this.height = height;
+        this.subjects = subjects;
+        this.mClass = mClass;
     }
 
     String getAvatar() {
@@ -45,6 +52,14 @@ public class Student {
 
     public String getName() {
         return name;
+    }
+
+    public MClass getmClass() {
+        return mClass;
+    }
+
+    public void setmClass(MClass mClass) {
+        this.mClass = mClass;
     }
 
     public int getHeight() {

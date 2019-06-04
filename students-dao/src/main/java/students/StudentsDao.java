@@ -3,8 +3,8 @@ package students;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Stateless
 public class StudentsDao extends Dao {
@@ -17,17 +17,28 @@ public class StudentsDao extends Dao {
 
     public void add(Student student) {
 
-        StudentJPA sJPA = StudentJPA.Mapper.DTOtoEntity(student);
+        StudentJPA studentJPA = StudentJPA.Mapper.DTOtoEntity(student);
 
-        List<SubjectJPA> subjects = SubjectJPA.Mapper.DTOtoEntity(student.getSubjects());
+        ClassJPA classJPA = ClassJPA.Mapper.DTOtoEntity(student.getmClass());
 
-        for (SubjectJPA subject : subjects) {
-            Set<StudentJPA> s = subject.getStudentId();
-            s.add(sJPA);
-            subject.setStudentId(s);
-            this.create(subject);
-        }
-        //  create(sJPA);
+        List<SubjectJPA> subjectJPAs = SubjectJPA.Mapper.DTOtoEntity(student.getSubjects());
+
+//        Set<SubjectJPA> s = new HashSet<>(subjectJPAs);
+//
+//        studentJPA.setSubjectID(s);
+//
+//        studentJPA.setGroup(classJPA);
+
+        HashSet<StudentJPA> x = new HashSet<>();
+        x.add(studentJPA);
+
+        subjectJPAs.forEach(subjectJPA -> {
+            subjectJPA.setStudentId(x);
+            create(subjectJPA);
+        });
+
+        create(classJPA);
+        create(studentJPA);
     }
 
     public boolean update(Integer id, Student student) {

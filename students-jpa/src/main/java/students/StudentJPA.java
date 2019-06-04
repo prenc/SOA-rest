@@ -22,7 +22,7 @@ public class StudentJPA {
 
     @Lob
     private String avatar;
-    @ManyToMany(mappedBy = "studentId")
+    @ManyToMany(mappedBy = "studentId", cascade = CascadeType.ALL)
     private Set<SubjectJPA> subjectID = new HashSet<>();
 
     public Set<SubjectJPA> getSubjectID() {
@@ -38,14 +38,6 @@ public class StudentJPA {
     }
 
     public StudentJPA() {
-    }
-
-    public Set<SubjectJPA> getSubjectsID() {
-        return subjectID;
-    }
-
-    public void setSubjectsID(Set<SubjectJPA> subjectsID) {
-        this.subjectID = subjectsID;
     }
 
     public ClassJPA getGroup() {
