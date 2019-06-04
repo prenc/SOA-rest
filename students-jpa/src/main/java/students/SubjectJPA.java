@@ -4,7 +4,9 @@ import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -13,22 +15,24 @@ public class SubjectJPA implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Integer id;
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "students_to_subjects", joinColumns = @JoinColumn(name = "subjectsID"), inverseJoinColumns = @JoinColumn(name = "studentsID"))
-    private List<StudentJPA> studentId;
+    @JoinTable(name = "students_to_subjects", joinColumns = @JoinColumn(name = "t_subjects_id"),
+            inverseJoinColumns = @JoinColumn(name = "t_students_id"))
+    private Set<StudentJPA> studentId = new HashSet<>();
 
     public SubjectJPA() {
     }
 
-    public List<StudentJPA> getStudentId() {
+    public Set<StudentJPA> getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(List<StudentJPA> studentsId) {
-        this.studentId = studentsId;
+    public void setStudentId(Set<StudentJPA> studentId) {
+        this.studentId = studentId;
     }
 
     public String getName() {

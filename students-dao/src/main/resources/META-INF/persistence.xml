@@ -12,15 +12,15 @@
         <class>students.SubjectJPA</class>
         <class>students.StudentJPA</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql.agh.edu.pl:3306/prenc1"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql.agh.edu.pl:3306/prenc2"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.user" value="prenc1"/>
-            <property name="javax.persistence.jdbc.password" value="TfvaGjd4cmGLakz4"/>
+            <property name="javax.persistence.jdbc.user" value="prenc2"/>
+            <property name="javax.persistence.jdbc.password" value="nRqPJ9kEu7z0Mi6E"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -4,14 +4,17 @@ package students;
 import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "t_students")
 public class StudentJPA {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
 
     private String name;
@@ -24,11 +27,18 @@ public class StudentJPA {
     @JoinColumn(name = "classID")
     private ClassJPA group;
 
+    @ManyToMany(mappedBy = "studentId", cascade = CascadeType.ALL)
+    private Set<SubjectJPA> subjectID = new HashSet<>();
+
     public StudentJPA() {
     }
 
-    public StudentJPA(ClassJPA group) {
-        this.group = group;
+    public Set<SubjectJPA> getSubjectsID() {
+        return subjectID;
+    }
+
+    public void setSubjectsID(Set<SubjectJPA> subjectsID) {
+        this.subjectID = subjectsID;
     }
 
     public ClassJPA getGroup() {

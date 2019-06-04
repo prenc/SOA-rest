@@ -25,7 +25,7 @@ public class Consumer {
     private static String jwtToken;
 
     private static Student exampleS = new Student("Student4", 167, new ArrayList<>(Arrays.asList(new Subject("PE"),
-            new Subject("trele"))));
+            new Subject("History"))));
 
     private static Student s1 = new Student("Student1", 185, new ArrayList<>(Collections.singletonList(new Subject("PE"))));
     private static Student s2 = new Student("Student2", 166, new ArrayList<>(Collections.singletonList(new Subject("Religion"))));
@@ -44,10 +44,7 @@ public class Consumer {
 
         getStudent("Student3");
 
-
-//        purgeStudents();
-
-        printAllStudents();
+        printAllStudents("Religion");
     }
 
     private static void printAllStudents() {
@@ -64,6 +61,36 @@ public class Consumer {
 
         StringBuilder output = new StringBuilder();
 
+        if (!studentList.isEmpty()) {
+            for (Student student : studentList) {
+                output.append(student).append("\n");
+            }
+
+            output.deleteCharAt(output.lastIndexOf("\n"));
+        }
+
+        System.out.println(output);
+        printHLine("Status: " + response.getStatusInfo());
+        printHLine("");
+        client.close();
+    }
+
+    private static void printAllStudents(String subject) {
+        printHLine("PRINT STUDENTS");
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(URL);
+        Response response = target
+                .path("/")
+                .queryParam("subject", subject)
+                .request()
+                .get();
+
+        List<Student> studentList = response.readEntity(new GenericType<List<Student>>() {
+        });
+
+        StringBuilder output = new StringBuilder();
+
+        printHLine("PRINT STUDENTS THAT ATTEND ON " + subject);
         if (!studentList.isEmpty()) {
             for (Student student : studentList) {
                 output.append(student).append("\n");

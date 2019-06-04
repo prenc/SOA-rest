@@ -304,10 +304,14 @@ public class StudentResource {
             )
     })
     public Response getStudents(
-            @QueryParam("studentName") final String studentName
+            @QueryParam("studentName") final String studentName,
+            @QueryParam("subject") final String subject
     ) {
         if (studentName != null) {
             return Response.status(Response.Status.OK).entity(studentsDao.getAllByName(studentName)).build();
+        }
+        if (subject != null) {
+            return Response.status(Response.Status.OK).entity(studentsDao.getStudentsBySubject(subject)).build();
         } else {
             return Response.status(Response.Status.OK).entity(studentsDao.getAll()).build();
         }

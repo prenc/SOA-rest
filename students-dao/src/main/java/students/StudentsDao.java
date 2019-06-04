@@ -6,8 +6,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Stateless
 public class StudentsDao extends Dao {
@@ -25,7 +25,7 @@ public class StudentsDao extends Dao {
         List<SubjectJPA> subjects = SubjectJPA.Mapper.DTOtoEntity(student.getSubjects());
 
         for (SubjectJPA subject : subjects) {
-            ArrayList<StudentJPA> s = new ArrayList<>();
+            Set<StudentJPA> s = subject.getStudentId();
             s.add(sJPA);
             subject.setStudentId(s);
             this.update(subject);
@@ -35,9 +35,7 @@ public class StudentsDao extends Dao {
     }
 
     public boolean update(Integer id, Student student) {
-        StudentJPA.Mapper sm = new StudentJPA.Mapper();
-
-        StudentJPA sJPA = sm.DTOtoEntity(student);
+        StudentJPA sJPA = StudentJPA.Mapper.DTOtoEntity(student);
 
         if (this.getOne(id) != null) {
             sJPA.setId(id);
@@ -69,9 +67,23 @@ public class StudentsDao extends Dao {
 
         List<StudentJPA> results = query.getResultList();
 
-        StudentJPA.Mapper sm = new StudentJPA.Mapper();
 
-        return sm.EntityToDTO(results);
+        return StudentJPA.Mapper.EntityToDTO(results);
+    }
+
+    public List<Student> getStudentsBySubject(String subject) {
+
+        List results = entityManager.createQuery("select s from SubjectJPA b " +
+                        "join SubjectJPA.studentId s " +
+                        "where b.id = :id"
+//                        "and b.name ='" + subject + "'"
+//        List results = entityManager.createQuery("select st from StudentJPA st"
+        ).getResultList();
+
+        System.out.println(results);
+
+
+        return StudentJPA.Mapper.EntityToDTO(results);
     }
 
     public List<Student> getAllByName(String name) {
@@ -88,17 +100,15 @@ public class StudentsDao extends Dao {
 
         List<StudentJPA> results = query.getResultList();
 
-        StudentJPA.Mapper sm = new StudentJPA.Mapper();
 
-        return sm.EntityToDTO(results);
+        return StudentJPA.Mapper.EntityToDTO(results);
     }
 
     public Student getOne(Integer id) {
-        StudentJPA.Mapper sm = new StudentJPA.Mapper();
 
         StudentJPA studentJPA = this.entityManager.find(StudentJPA.class, id);
 
-        return sm.EntityToDTO(studentJPA);
+        return StudentJPA.Mapper.EntityToDTO(studentJPA);
     }
 
 }
