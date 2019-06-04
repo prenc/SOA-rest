@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Table(name = "t_students")
 public class StudentJPA {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -22,13 +22,20 @@ public class StudentJPA {
 
     @Lob
     private String avatar;
+    @ManyToMany(mappedBy = "studentId")
+    private Set<SubjectJPA> subjectID = new HashSet<>();
+
+    public Set<SubjectJPA> getSubjectID() {
+        return subjectID;
+    }
 
     @ManyToOne(targetEntity = ClassJPA.class)
     @JoinColumn(name = "classID")
     private ClassJPA group;
 
-    @ManyToMany(mappedBy = "studentId", cascade = CascadeType.ALL)
-    private Set<SubjectJPA> subjectID = new HashSet<>();
+    public void setSubjectID(Set<SubjectJPA> subjectID) {
+        this.subjectID = subjectID;
+    }
 
     public StudentJPA() {
     }

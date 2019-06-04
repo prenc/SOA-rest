@@ -2,10 +2,7 @@ package students;
 
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.ParameterExpression;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.List;
 import java.util.Set;
 
@@ -28,10 +25,9 @@ public class StudentsDao extends Dao {
             Set<StudentJPA> s = subject.getStudentId();
             s.add(sJPA);
             subject.setStudentId(s);
-            this.update(subject);
+            this.create(subject);
         }
-
-        this.create(sJPA);
+        //  create(sJPA);
     }
 
     public boolean update(Integer id, Student student) {
@@ -73,15 +69,19 @@ public class StudentsDao extends Dao {
 
     public List<Student> getStudentsBySubject(String subject) {
 
-        List results = entityManager.createQuery("select s from SubjectJPA b " +
-                        "join SubjectJPA.studentId s " +
-                        "where b.id = :id"
-//                        "and b.name ='" + subject + "'"
-//        List results = entityManager.createQuery("select st from StudentJPA st"
-        ).getResultList();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 
-        System.out.println(results);
+        CriteriaQuery<StudentJPA> q = cb.createQuery(StudentJPA.class);
+        Root<StudentJPA> c = q.from(StudentJPA.class);
+        ParameterExpression<String> p = cb.parameter(String.class);
+        Join<StudentJPA, SubjectJPA> subjects = c.join("subjectID", JoinType.LEFT);
 
+        Predicate predicate = cb.equal(subjects.get("name"), p);
+
+        q.select(c).distinct(true).where(predicate);
+
+        TypedQuery<StudentJPA> query = entityManager.createQuery(q);
+        List<StudentJPA> results = query.setParameter(p, subject).getResultList();
 
         return StudentJPA.Mapper.EntityToDTO(results);
     }
